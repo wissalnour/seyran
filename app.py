@@ -1,5 +1,5 @@
 from flask import Flask, request  , send_from_directory
-
+import logging
 import os  
 from azure.storage.blob import BlobServiceClient
 from flask import Flask, request, redirect
@@ -12,7 +12,9 @@ try:
     container_client.get_container_properties() # get properties of the container to force exception to be thrown if container does not exist
 except Exception as e:
     container_client = blob_service_client.create_container(container_name)
-     
+
+logging.basicConfig(filename='logs/mon_journal.txt', level=logging.DEBUG)
+
 @app.route('/app/<path:filename>')
 def app_dir(filename):
     # Ajustez le chemin en fonction de la structure de votre application
