@@ -74,3 +74,5 @@ def upload_photos():
             print("Ignoring duplicate filenames") # ignore duplicate filenames
        
     return redirect('/') 
+if __name__=="__main__":
+    app.run(debug=True, host="0.0.0.0",port=5000 )
