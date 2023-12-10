@@ -23,6 +23,7 @@ def app_dir(filename):
      
 @app.route("/")
 def view_photos():
+    logging.info("Endpoint view_photos a été atteint.")
     blob_items = container_client.list_blobs() # list all the blobs in the container
 
     img_html = "<div style='display: flex; justify-content: space-between; flex-wrap: wrap;'>"
