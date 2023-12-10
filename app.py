@@ -1,4 +1,5 @@
-from flask import Flask, request  
+from flask import Flask, request  , send_from_directory
+
 import os  
 from azure.storage.blob import BlobServiceClient
 from flask import Flask, request, redirect
@@ -12,7 +13,11 @@ try:
 except Exception as e:
     container_client = blob_service_client.create_container(container_name)
      
-
+@app.route('/app/<path:filename>')
+def app_dir(filename):
+    # Ajustez le chemin en fonction de la structure de votre application
+    app_path = os.path.join('/home/site/wwwroot', 'app')
+    return send_from_directory(azure12, filename)
      
 @app.route("/")
 def view_photos():
