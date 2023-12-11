@@ -1,5 +1,7 @@
 {
     "cSpell.words": [
         "enctype"
-    ]
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/4c5ec5e0-dcab-4340-9a16-a93a0617bb05/resourceGroups/galerie_docker/providers/Microsoft.Web/sites/azure12",
+    "appService.deploySubpath": "."
 }
