@@ -13,7 +13,6 @@ try:
 except Exception as e:
     container_client = blob_service_client.create_container(container_name)
 
-logging.basicConfig(filename='logs/mon_journal.txt', level=logging.DEBUG)
 
 @app.route('/app/<path:filename>')
 def app_dir(filename):

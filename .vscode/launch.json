@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "flask",
             "env": {
-                "FLASK_APP":"startup:app",
+                "FLASK_APP":"app:app",
                 "FLASK_ENV": "development"
             }, 
             "args": [
