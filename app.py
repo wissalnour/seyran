@@ -23,7 +23,8 @@ endpoint = "https://westeurope.api.cognitive.microsoft.com/"
 training_key = "35f13ca622044df0849a1191b52b0fac"
 project_id = "cdcbd1eb-8682-42e0-bff8-408c3f4479d6"
 published_model_name = "3ab5b43b-3606-44ab-84f1-7c57dc47617f"
-prediction_endpoint = f"{endpoint}/customvision/v3.0/training/projects/{project_id}/classify"
+prediction_endpoint = "https://westeurope.api.cognitive.microsoft.com/customvision/v3.0/Prediction/cdcbd1eb-8682-42e0-bff8-408c3f4479d6/classify/iterations/Iteration3/url"
+
 Prediction_Key ="4d935f41d3cc40539215268e3f2b9c04"
 training_client = CustomVisionTrainingClient(training_key, endpoint)
 
@@ -41,6 +42,8 @@ def classify_image(image_url):
         response.raise_for_status()  # Raise HTTPError for bad responses
         prediction_results = response.json()
 
+          # Print the entire response for debugging
+        print(f"Full response for {image_url}: {prediction_results}")
         # Vérifiez si le champ 'predictions' est présent dans la réponse
         if 'predictions' in prediction_results:
             return prediction_results
@@ -123,8 +126,9 @@ def classify_photos():
         for blob in blob_items:
             blob_client = container_client.get_blob_client(blob=blob.name)
             image_url = blob_client.url
-
+            print(f"Processing {blob.name} - {image_url}")
             prediction_results = classify_image(image_url)
+
             if prediction_results is not None:
                 print(f"Prediction results for {blob.name}: {prediction_results}")
                 if 'predictions' in prediction_results:
