@@ -9,3 +9,5 @@ MarkupSafe
 typing_extensions
 Werkzeug
 azure-storage-blob
+azure-cognitiveservices-vision-customvision
+requests
